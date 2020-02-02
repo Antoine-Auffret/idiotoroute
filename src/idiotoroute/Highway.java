@@ -11,12 +11,12 @@ public class Highway {
     }
 
     void setRoad() {
-        ArrayList<Road> roads = new ArrayList<Road>();
+        /*ArrayList<Road> roads = new ArrayList<Road>();
 
 
 
         for(int i=0; i<nbRoad; i++){
             roads.add(new Road());
-        }
+        }*/
     }
 }

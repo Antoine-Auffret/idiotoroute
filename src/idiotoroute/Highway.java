@@ -6,7 +6,7 @@ import java.util.Vector;
 
 public class Highway {
 
-    private static int nbRoad = 6;
+    private static int nbRoad = 5;
     private Vector<Vehicule> vehiculeQuiRoule;
     ArrayList<Road> roads = new ArrayList<Road>();
 
@@ -39,7 +39,21 @@ public class Highway {
 
     void setRoad() {
         for(int i=1; i<=nbRoad; i++){
-            roads.add(new Road(i));
+            if (i==1) {
+                roads.add(new Road(i, 4));
+            }
+            else if (i==2) {
+                roads.add(new Road(i, 3));
+            }
+            else if (i==3) {
+                roads.add(new Road(i, 3));
+            }
+            else if (i==4) {
+                roads.add(new Road(i, 4));
+            }
+            else if (i==5) {
+                roads.add(new Road(i, 2));
+            }
         }
     }
 }

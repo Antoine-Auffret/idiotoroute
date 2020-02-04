@@ -2,13 +2,17 @@ package idiotoroute;
 
 public class Vehicule {
 
+    private int noSerie;
     private int niveauEssence = 10;
     private String type;
     private Boolean isCrashed = false;
 
+    private static int noSerieCompteur = 0;
+
     Vehicule(int essence, String type) {
         setEssence(essence);
         this.type = type;
+        noSerie = noSerieCompteur++;
     }
 
     public void rouler() throws VehiculeException {
@@ -32,6 +36,6 @@ public class Vehicule {
 
     @Override
     public String toString(){
-        return "Type:" + type + ", ESS:" + niveauEssence;
+        return "(NS:" + noSerie + ", ESS:" + niveauEssence + ") " + type;
     }
 }

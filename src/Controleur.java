@@ -6,23 +6,20 @@ public class Controleur {
 
     public static void main(String[] args) throws InterruptedException {
         Controleur controleur = new Controleur();
-        Vehicule A = controleur.ajouterVehicule();
-        System.out.println(A);
+        Highway highway = new Highway();
+        Vehicule v1 = controleur.ajouterVehicule();
+        Vehicule v2 = controleur.ajouterVehicule();
+        Vehicule v3 = controleur.ajouterVehicule();
+        highway.rouler(v1);
+        highway.rouler(v2);
+        highway.rouler(v3);
 
         while (true) {
-            tourSuivant(A);
-            System.out.println(A);
+            highway.tourSuivant();
+            System.out.println(v1);
+            System.out.println(v2);
+            System.out.println(v3);
             Thread.sleep(1000);
-        }
-    }
-
-    public static void tourSuivant(Vehicule x) {
-        try {
-            x.rouler();
-        }
-        catch (VehiculeException e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
         }
     }
 

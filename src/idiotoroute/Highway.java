@@ -12,15 +12,16 @@ public class Highway {
 
     public Highway(){
         setRoad();
-        System.out.println(roads);
         vehiculeQuiRoule = new Vector<Vehicule>();
     }
 
     public void rouler(Vehicule vehicule) {
         vehiculeQuiRoule.add(vehicule);
+        roads.get(0).putVehiculeOnRoad(vehicule);
     }
 
     public void tourSuivant() {
+        System.out.println(roads);
         for (Enumeration<Vehicule> enumVehicule = vehiculeQuiRoule.elements(); enumVehicule.hasMoreElements();) {
             try {
                 enumVehicule.nextElement().rouler();

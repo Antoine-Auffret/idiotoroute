@@ -4,6 +4,7 @@ public class Vehicule {
 
     private int niveauEssence = 10;
     private String type;
+    private Boolean isCrashed = false;
 
     Vehicule(int essence, String type) {
         setEssence(essence);
@@ -13,8 +14,10 @@ public class Vehicule {
     public void rouler() throws VehiculeException {
         if (verifierEssence())
             niveauEssence--;
-        else
+        else if(!isCrashed) {
+            isCrashed = true;
             throw new VehiculeException(this);
+        }
     }
 
     private void setEssence(int essence) {

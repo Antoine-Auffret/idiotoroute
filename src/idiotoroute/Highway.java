@@ -6,7 +6,7 @@ import java.util.Vector;
 
 public class Highway {
 
-    private static int nbRoad = 5;
+    private static int nbRoad = 6;
     private Vector<Vehicule> vehiculeQuiRoule;
     ArrayList<Road> roads = new ArrayList<Road>();
 

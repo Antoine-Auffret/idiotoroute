@@ -12,8 +12,12 @@ public class Road {
         vehicule = new Vector<Vehicule>();
     }
 
-    public void putVehiculeOnRoad(Vehicule vehiculeOnRoad) {
+    public void addVehiculeOnRoad(Vehicule vehiculeOnRoad) {
         vehicule.add(vehiculeOnRoad);
+    }
+
+    public void removeVehiculeOnRoad(Vehicule vehiculeOnRoad) {
+        vehicule.remove(vehiculeOnRoad);
     }
 
     @Override

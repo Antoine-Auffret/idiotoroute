@@ -17,7 +17,12 @@ public class Highway {
 
     public void rouler(Vehicule vehicule) {
         vehiculeQuiRoule.add(vehicule);
-        roads.get(0).putVehiculeOnRoad(vehicule);
+        roads.get(0).addVehiculeOnRoad(vehicule);
+    }
+
+    public void changeRoad(Vehicule vehicule, Road oldRoad, Road newRoad) {
+        oldRoad.removeVehiculeOnRoad(vehicule);
+        newRoad.addVehiculeOnRoad(vehicule);
     }
 
     public void tourSuivant() {

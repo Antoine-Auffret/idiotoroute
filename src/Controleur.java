@@ -8,21 +8,24 @@ public class Controleur {
         int nbTour = 1;
         Controleur controleur = new Controleur();
         Highway highway = new Highway();
+        Vehicule v1 = null;
+        Vehicule v2 = null;
+        Vehicule v3 = null;
 
         while (true) {
-            Vehicule v1 = null;
             if (nbTour == 1) {
                 v1 = controleur.ajouterVehicule();
                 highway.rouler(v1);
             } else if (nbTour == 10) {
-                Vehicule v2 = controleur.ajouterVehicule();
+                v2 = controleur.ajouterVehicule();
                 highway.rouler(v2);
             } else if (nbTour == 20) {
-                Vehicule v3 = controleur.ajouterVehicule();
+                v3 = controleur.ajouterVehicule();
                 highway.rouler(v3);
                 highway.changeRoad(v1, 0, 1);
             }
             System.out.println("Tour:" + nbTour);
+            highway.checkCollision();
             highway.tourSuivant();
             nbTour++;
             Thread.sleep(100);

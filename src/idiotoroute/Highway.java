@@ -1,19 +1,20 @@
 package idiotoroute;
 
-import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Vector;
+import java.lang.*;
 
 public class Highway {
 
     private static int nbRoad = 5;
-    private static int distanceCollision = 5;
+    private static int distanceCollision = 50;
     private Vector<Vehicule> vehiculeQuiRoule;
-    ArrayList<Road> roads = new ArrayList<Road>();
+    private Vector<Road> roads;
 
     public Highway(){
-        setRoad();
+        roads = new Vector<Road>();
         vehiculeQuiRoule = new Vector<Vehicule>();
+        setRoad();
     }
 
     public void rouler(Vehicule vehicule) {
@@ -41,6 +42,25 @@ public class Highway {
     }
 
     public void checkCollision() {
+
+        for (Road road: roads) {
+            Vector<Vehicule> vehiculeOnRoad = road.vehicule;
+            System.out.println(vehiculeOnRoad);
+            for (Vehicule vehicule: vehiculeOnRoad) {
+                //System.out.println(vehicule);
+                for(Vehicule vehicule2: vehiculeOnRoad){
+                    //System.out.println(vehicule2);
+                    if(vehicule != vehicule2){
+                        System.out.println(Math.abs(vehicule.getPos() - vehicule2.getPos()));
+                        if(Math.abs(vehicule.getPos() - vehicule2.getPos()) <= distanceCollision){
+                            System.out.println("Collision");
+                            vehicule.setSpeed(0);
+                            vehicule2.setSpeed(0);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     void setRoad() {

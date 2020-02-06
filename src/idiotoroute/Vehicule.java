@@ -18,6 +18,18 @@ public class Vehicule {
         noSerie = noSerieCompteur++;
     }
 
+    public double getPos() {
+        return pos;
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
+
     public void rouler() throws VehiculeException {
         if (verifierEssence()) {
             niveauEssence--;

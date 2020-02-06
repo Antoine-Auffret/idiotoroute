@@ -2,5 +2,7 @@ package idiotoroute;
 
 public class VehiculeA extends Vehicule{
 
-    public VehiculeA() { super(10, "Electrolyte"); }
+    private static double speed = 0.5;
+
+    public VehiculeA() { super(100, "Electrolyte", speed); }
 }

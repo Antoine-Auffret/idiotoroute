@@ -5,21 +5,27 @@ import java.util.Random;
 public class Controleur {
 
     public static void main(String[] args) throws InterruptedException {
+        int nbTour = 1;
         Controleur controleur = new Controleur();
         Highway highway = new Highway();
-        Vehicule v1 = controleur.ajouterVehicule();
-        Vehicule v2 = controleur.ajouterVehicule();
-        Vehicule v3 = controleur.ajouterVehicule();
-        highway.rouler(v1);
-        highway.rouler(v2);
-        highway.rouler(v3);
 
         while (true) {
+            Vehicule v1 = null;
+            if (nbTour == 1) {
+                v1 = controleur.ajouterVehicule();
+                highway.rouler(v1);
+            } else if (nbTour == 10) {
+                Vehicule v2 = controleur.ajouterVehicule();
+                highway.rouler(v2);
+            } else if (nbTour == 20) {
+                Vehicule v3 = controleur.ajouterVehicule();
+                highway.rouler(v3);
+                highway.changeRoad(v1, 0, 1);
+            }
+            System.out.println("Tour:" + nbTour);
             highway.tourSuivant();
-            System.out.println(v1);
-            System.out.println(v2);
-            System.out.println(v3);
-            Thread.sleep(1000);
+            nbTour++;
+            Thread.sleep(100);
         }
     }
 

@@ -7,6 +7,7 @@ import java.util.Vector;
 public class Highway {
 
     private static int nbRoad = 5;
+    private static int distanceCollision = 5;
     private Vector<Vehicule> vehiculeQuiRoule;
     ArrayList<Road> roads = new ArrayList<Road>();
 
@@ -20,9 +21,11 @@ public class Highway {
         roads.get(0).addVehiculeOnRoad(vehicule);
     }
 
-    public void changeRoad(Vehicule vehicule, Road oldRoad, Road newRoad) {
-        oldRoad.removeVehiculeOnRoad(vehicule);
-        newRoad.addVehiculeOnRoad(vehicule);
+    public void changeRoad(Vehicule vehicule, int oldRoad, int newRoad) {
+        if (roads.get(oldRoad).vehicule.contains(vehicule))
+            roads.get(oldRoad).removeVehiculeOnRoad(vehicule);
+        if (!roads.get(newRoad).vehicule.contains(vehicule))
+            roads.get(newRoad).addVehiculeOnRoad(vehicule);
     }
 
     public void tourSuivant() {
@@ -35,6 +38,9 @@ public class Highway {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void checkCollision() {
     }
 
     void setRoad() {

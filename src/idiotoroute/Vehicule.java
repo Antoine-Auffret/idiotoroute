@@ -3,21 +3,26 @@ package idiotoroute;
 public class Vehicule {
 
     private int noSerie;
-    private int niveauEssence = 10;
+    private int niveauEssence;
+    private double pos = 0.0;
+    private double speed;
     private String type;
     private Boolean isCrashed = false;
 
     private static int noSerieCompteur = 0;
 
-    Vehicule(int essence, String type) {
+    Vehicule(int essence, String type, double speed) {
         setEssence(essence);
         this.type = type;
+        this.speed = speed;
         noSerie = noSerieCompteur++;
     }
 
     public void rouler() throws VehiculeException {
-        if (verifierEssence())
+        if (verifierEssence()) {
             niveauEssence--;
+            this.pos = pos + speed;
+        }
         else if(!isCrashed) {
             isCrashed = true;
             throw new VehiculeException(this);
@@ -36,6 +41,6 @@ public class Vehicule {
 
     @Override
     public String toString(){
-        return "(NS:" + noSerie + ", ESS:" + niveauEssence + ") " + type;
+        return "(NS:" + noSerie + ", ESS:" + niveauEssence + ", POS:" + pos + ", SPD:" + speed + ") " + type;
     }
 }

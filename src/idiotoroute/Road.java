@@ -1,13 +1,12 @@
 package idiotoroute;
 
-import java.io.IOException;
 import java.util.Vector;
 
 public class Road {
 
     private int id;
     private int nbExit;
-    private Vector<Vehicule> vehicule;
+    public Vector<Vehicule> vehicule;
 
     Road(int id, int nbExit) {
         if (nbExit>= 2 && nbExit<=6) {
@@ -19,9 +18,7 @@ public class Road {
             throw new IllegalArgumentException("nbExit must be between 2 and 6");
     }
 
-    public void addVehiculeOnRoad(Vehicule vehiculeOnRoad) {
-        vehicule.add(vehiculeOnRoad);
-    }
+    public void addVehiculeOnRoad(Vehicule vehiculeOnRoad) { vehicule.add(vehiculeOnRoad); }
 
     public void removeVehiculeOnRoad(Vehicule vehiculeOnRoad) {
         vehicule.remove(vehiculeOnRoad);

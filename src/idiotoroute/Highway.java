@@ -17,7 +17,7 @@ public class Highway {
         setRoad();
     }
 
-    public void rouler(Vehicule vehicule) {
+    public void ajouterVehicule(Vehicule vehicule) {
         vehiculeQuiRoule.add(vehicule);
         roads.get(0).addVehiculeOnRoad(vehicule);
     }
@@ -27,6 +27,10 @@ public class Highway {
             roads.get(oldRoad).removeVehiculeOnRoad(vehicule);
         if (!roads.get(newRoad).vehicule.contains(vehicule))
             roads.get(newRoad).addVehiculeOnRoad(vehicule);
+        System.out.println("RODSPD:"+roads.get(newRoad).getSpeed());
+        System.out.println("OLDSPD:"+vehicule.getOriginalSpeed());
+        System.out.println("NEWSPD:"+vehicule.getOriginalSpeed()*roads.get(newRoad).getSpeed());
+        vehicule.setSpeed(vehicule.getOriginalSpeed()*roads.get(newRoad).getSpeed());
     }
 
     public void tourSuivant() {
@@ -57,10 +61,10 @@ public class Highway {
                         if(Math.abs(vehicule1.getPos() - vehicule2.getPos()) <= distanceCollision){
                             if (vehicule1.getPos() < vehicule2.getPos()) {
                                 for (Exit exit: road.exit) {
-                                    System.out.println(exit.getPos()-2);
-                                    System.out.println(exit.getPos()+2);
+                                    System.out.println(exit.getPos()-20);
+                                    System.out.println(exit.getPos()+20);
                                     System.out.println(vehicule1.getPos());
-                                    if (exit.getPos()+2 >= vehicule1.getPos() && exit.getPos()-2 <= vehicule1.getPos()){
+                                    if (exit.getPos()+20 >= vehicule1.getPos() && exit.getPos()-20 <= vehicule1.getPos()){
                                         oldRoad = road.getId();
                                         newRoad = (road.getId()+1);
                                         System.out.println("vehicule1 change road "+oldRoad+" to road "+newRoad);
@@ -70,8 +74,8 @@ public class Highway {
                                 }
                                 if (!changeRoadBool) {
                                     System.out.println("Collision");
-                                    vehicule1.setSpeed(0);
-                                    vehicule2.setSpeed(0);
+                                    //vehicule1.setSpeed(0);
+                                    //vehicule2.setSpeed(0);
                                 }
                             }
                         }
@@ -83,7 +87,7 @@ public class Highway {
 
     void setRoad() {
         for(int i=0; i<nbRoad; i++){
-            roads.add(new Road(i, 4,100));
+            roads.add(new Road(i, 4,100, i+2));
         }
     }
     /*void setRoad() {

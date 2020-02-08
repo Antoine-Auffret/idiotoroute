@@ -7,14 +7,16 @@ public class Road {
     private int id;
     private int nbExit;
     private int lon;
+    private int speed;
     public Vector<Vehicule> vehicule;
     public Vector<Exit> exit;
 
-    public Road(int id, int nbExit, int lon) {
+    public Road(int id, int nbExit, int lon, int speed) {
         if (nbExit>= 2 && nbExit<=6) {
             this.id = id;
             this.nbExit = nbExit;
             this.lon = lon;
+            this.speed = speed;
             vehicule = new Vector<Vehicule>();
             exit = new Vector<Exit>();
             initExit();
@@ -25,6 +27,10 @@ public class Road {
 
     public int getId() {
         return id;
+    }
+
+    public int getSpeed() {
+        return speed;
     }
 
     public void initExit() {

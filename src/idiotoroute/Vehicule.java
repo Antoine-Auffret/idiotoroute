@@ -6,6 +6,7 @@ public class Vehicule {
     private int niveauEssence;
     private double pos = 0.0;
     private double speed;
+    private double originalSpeed;
     private String type;
     private Boolean isCrashed = false;
 
@@ -15,7 +16,12 @@ public class Vehicule {
         setEssence(essence);
         this.type = type;
         this.speed = speed;
+        this.originalSpeed = speed;
         noSerie = noSerieCompteur++;
+    }
+
+    public int getNoSerie() {
+        return noSerie;
     }
 
     public double getPos() {
@@ -24,6 +30,10 @@ public class Vehicule {
 
     public double getSpeed() {
         return speed;
+    }
+
+    public double getOriginalSpeed() {
+        return originalSpeed;
     }
 
     public void setSpeed(double speed) {

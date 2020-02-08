@@ -20,6 +20,7 @@ public class Highway {
     public void ajouterVehicule(Vehicule vehicule) {
         vehiculeQuiRoule.add(vehicule);
         roads.get(0).addVehiculeOnRoad(vehicule);
+        vehicule.setSpeed(roads.get(0).getSpeed()*vehicule.getSpeed());
     }
 
     public void changeRoad(Vehicule vehicule, int oldRoad, int newRoad) {
@@ -54,6 +55,7 @@ public class Highway {
             changeRoadBool = false;
             Vector<Vehicule> vehiculeOnRoad = (Vector<Vehicule>) road.vehicule.clone();
             System.out.println(road);
+            System.out.println(road.exit);
             for (Vehicule vehicule1: vehiculeOnRoad) {
                 for(Vehicule vehicule2: vehiculeOnRoad){
                     if(vehicule1 != vehicule2 && !skip){
@@ -87,26 +89,21 @@ public class Highway {
 
     void setRoad() {
         for(int i=0; i<nbRoad; i++){
-            roads.add(new Road(i, 4,100, i+2));
-        }
-    }
-    /*void setRoad() {
-        for(int i=1; i<=nbRoad; i++){
             if (i==1) {
-                roads.add(new Road(i, 4, 100));
+                roads.add(new Road(i, 4, 100, 0.5));
             }
             else if (i==2) {
-                roads.add(new Road(i, 3, 80));
+                roads.add(new Road(i, 3, 90, 0.75));
             }
             else if (i==3) {
-                roads.add(new Road(i, 3, 60));
+                roads.add(new Road(i, 3, 80, 1));
             }
             else if (i==4) {
-                roads.add(new Road(i, 4, 40));
+                roads.add(new Road(i, 4, 70, 1.25));
             }
             else if (i==5) {
-                roads.add(new Road(i, 2, 20));
+                roads.add(new Road(i, 2, 60, 1.5));
             }
         }
-    }*/
+    }
 }

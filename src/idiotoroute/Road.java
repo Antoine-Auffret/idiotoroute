@@ -7,11 +7,11 @@ public class Road {
     private int id;
     private int nbExit;
     private int lon;
-    private int speed;
+    private double speed;
     public Vector<Vehicule> vehicule;
     public Vector<Exit> exit;
 
-    public Road(int id, int nbExit, int lon, int speed) {
+    public Road(int id, int nbExit, int lon, double speed) {
         if (nbExit>= 2 && nbExit<=6) {
             this.id = id;
             this.nbExit = nbExit;
@@ -19,7 +19,7 @@ public class Road {
             this.speed = speed;
             vehicule = new Vector<Vehicule>();
             exit = new Vector<Exit>();
-            initExit();
+            initExit(nbExit, lon);
         }
         else
             throw new IllegalArgumentException("nbExit must be between 2 and 6");
@@ -29,11 +29,11 @@ public class Road {
         return id;
     }
 
-    public int getSpeed() {
+    public double getSpeed() {
         return speed;
     }
 
-    public void initExit() {
+    public void initExit(int nbExit, int lon) {
         exit.add(new Exit(0));
         exit.add(new Exit(33));
         exit.add(new Exit(66));
@@ -55,6 +55,6 @@ public class Road {
 
     @Override
     public String toString(){
-        return "Road:" + id + ", nbExit:" + nbExit + ", Vehicule" + vehicule;
+        return "Road:" + id + ", nbExit:" + nbExit + ", Lon:" + lon + ", Spd:" + speed + ", Vehicule" + vehicule;
     }
 }

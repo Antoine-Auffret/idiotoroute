@@ -28,9 +28,11 @@ public class Highway {
             roads.get(oldRoad).removeVehiculeOnRoad(vehicule);
         if (!roads.get(newRoad).vehicule.contains(vehicule))
             roads.get(newRoad).addVehiculeOnRoad(vehicule);
-        System.out.println("RODSPD:"+roads.get(newRoad).getSpeed());
-        System.out.println("OLDSPD:"+vehicule.getOriginalSpeed());
-        System.out.println("NEWSPD:"+vehicule.getOriginalSpeed()*roads.get(newRoad).getSpeed());
+        System.out.println("OldRoadSPD:"+roads.get(oldRoad).getSpeed());
+        System.out.println("NewRoadSPD:"+roads.get(newRoad).getSpeed());
+        System.out.println("OldSPD:"+vehicule.getSpeed());
+        System.out.println("OrgSPD:"+vehicule.getOriginalSpeed());
+        System.out.println("NewSPD:"+vehicule.getOriginalSpeed()*roads.get(newRoad).getSpeed());
         vehicule.setSpeed(vehicule.getOriginalSpeed()*roads.get(newRoad).getSpeed());
     }
 
@@ -69,7 +71,7 @@ public class Highway {
                                     if (exit.getPos()+20 >= vehicule1.getPos() && exit.getPos()-20 <= vehicule1.getPos()){
                                         oldRoad = road.getId();
                                         newRoad = (road.getId()+1);
-                                        System.out.println("vehicule1 change road "+oldRoad+" to road "+newRoad);
+                                        System.out.println(vehicule1+" change from road "+oldRoad+" to road "+newRoad);
                                         changeRoad(vehicule1, oldRoad, newRoad);
                                         changeRoadBool = true;
                                     }
@@ -89,16 +91,16 @@ public class Highway {
 
     void setRoad() {
         for(int i=0; i<nbRoad; i++){
-            if (i==1) {
+            if (i==0) {
                 roads.add(new Road(i, 4, 100, 0.5));
             }
-            else if (i==2) {
+            else if (i==1) {
                 roads.add(new Road(i, 3, 90, 0.75));
             }
-            else if (i==3) {
+            else if (i==2) {
                 roads.add(new Road(i, 3, 80, 1));
             }
-            else if (i==4) {
+            else if (i==3) {
                 roads.add(new Road(i, 4, 70, 1.25));
             }
             else if (i==5) {

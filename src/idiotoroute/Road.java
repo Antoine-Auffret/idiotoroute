@@ -38,7 +38,7 @@ public class Road {
         exit.add(new Exit(33));
         exit.add(new Exit(66));
         exit.add(new Exit(100));
-        System.out.println(exit);
+        //System.out.println(exit);
     }
 
     /*public void initExit(){

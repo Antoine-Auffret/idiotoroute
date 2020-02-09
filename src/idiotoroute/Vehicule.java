@@ -20,12 +20,20 @@ public class Vehicule {
         noSerie = noSerieCompteur++;
     }
 
+    public int getNoSerie() {
+        return noSerie;
+    }
+
     public double getPos() {
         return pos;
     }
 
     public void setPos(double pos) {
         this.pos = pos;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public double getSpeed() {

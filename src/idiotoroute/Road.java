@@ -33,26 +33,26 @@ public class Road {
         return speed;
     }
 
+    public int getLon() {
+        return lon;
+    }
+
     public void initExit(int nbExit, int lon) {
         int distance = lon/nbExit;
         int longueur = 0;
         for(int i=0; i<nbExit; i++){
-            exit.add(new Exit(longueur));
+            exit.add(new Exit(i, longueur));
             longueur+=distance;
         }
     }
 
-    /*public void initExit(){
-        int offset = 0;
-        for(int i=0; i<nbExit; i++){
-            System.out.println((((Math.round( (float) i/(nbExit-1)))*lon)+offset)%lon);
-            exit.add(new Exit((((Math.round( (float) i/(nbExit-1)))*lon)+offset)%lon));
-        }
-    }*/
+    public void addVehiculeOnRoad(Vehicule vehiculeOnRoad) {
+        vehicule.add(vehiculeOnRoad);
+    }
 
-    public void addVehiculeOnRoad(Vehicule vehiculeOnRoad) { vehicule.add(vehiculeOnRoad); }
-
-    public void removeVehiculeOnRoad(Vehicule vehiculeOnRoad) { vehicule.remove(vehiculeOnRoad); }
+    public void removeVehiculeOnRoad(Vehicule vehiculeOnRoad) {
+        vehicule.remove(vehiculeOnRoad);
+    }
 
     @Override
     public String toString(){

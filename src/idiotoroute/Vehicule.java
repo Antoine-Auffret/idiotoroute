@@ -59,6 +59,10 @@ public class Vehicule {
         }
     }
 
+    public void crash(Vehicule vehicule1, Vehicule vehicule2) throws VehiculeCollisionException {
+        throw new VehiculeCollisionException(vehicule1, vehicule2);
+    }
+
     private void setEssence(int essence) {
         niveauEssence = essence;
         if (niveauEssence < 0)

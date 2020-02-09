@@ -106,7 +106,12 @@ public class Highway {
                                     vehicule2.setSpeed(0);
                                     road.vehicule.remove(vehicule1);
                                     road.vehicule.remove(vehicule2);
-                                    //throw new VehiculeCollisionException(vehicule1, vehicule2);
+                                    try {
+                                        vehicule1.crash(vehicule1, vehicule2);
+                                    } catch (VehiculeCollisionException e) {
+                                        System.out.println(e.getMessage());
+                                        e.printStackTrace();
+                                    }
                                 }
                             }
                         }

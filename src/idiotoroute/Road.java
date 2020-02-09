@@ -34,11 +34,12 @@ public class Road {
     }
 
     public void initExit(int nbExit, int lon) {
-        exit.add(new Exit(0));
-        exit.add(new Exit(33));
-        exit.add(new Exit(66));
-        exit.add(new Exit(100));
-        //System.out.println(exit);
+        int distance = lon/nbExit;
+        int longueur = 0;
+        for(int i=0; i<nbExit; i++){
+            exit.add(new Exit(longueur));
+            longueur+=distance;
+        }
     }
 
     /*public void initExit(){

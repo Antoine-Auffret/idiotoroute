@@ -4,7 +4,7 @@ public class Vehicule {
 
     private int noSerie;
     private int niveauEssence;
-    private double pos = 0.0;
+    private double pos = 10.0;
     private double speed;
     private double originalSpeed;
     private String type;
@@ -20,12 +20,12 @@ public class Vehicule {
         noSerie = noSerieCompteur++;
     }
 
-    public int getNoSerie() {
-        return noSerie;
-    }
-
     public double getPos() {
         return pos;
+    }
+
+    public void setPos(double pos) {
+        this.pos = pos;
     }
 
     public double getSpeed() {
@@ -43,7 +43,7 @@ public class Vehicule {
     public void rouler() throws VehiculeException {
         if (verifierEssence()) {
             niveauEssence--;
-            this.pos = pos + speed;
+            this.pos += speed;
         }
         else if(!isCrashed) {
             isCrashed = true;

@@ -4,31 +4,18 @@ import java.util.Random;
 
 public class Controleur {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, VehiculeCollisionException {
         int nbTour = 1;
         Controleur controleur = new Controleur();
         Highway highway = new Highway();
-        Vehicule v1 = null;
-        Vehicule v2 = null;
-        Vehicule v3 = null;
+        Vehicule veh;
 
         while (true) {
-            if (nbTour == 1) {
-                //v1 = controleur.ajouterVehicule();
-                v1 = new VehiculeA();
-                highway.ajouterVehicule(v1);
-            } else if (nbTour == 20) {
-                //v2 = controleur.ajouterVehicule();
-                v2 = new VehiculeB();
-                highway.ajouterVehicule(v2);
-            } else if (nbTour == 30) {
-                v3 = controleur.ajouterVehicule();
-                highway.ajouterVehicule(v3);
-                //highway.changeRoad(v1, 0, 1);
-                //highway.changeRoad(v2, 0, 1);
-            } else if (nbTour == 50) {
-                highway.changeRoad(v1,1,2);
+            if (nbTour%10 == 0) {
+                veh = controleur.ajouterVehicule();
+                highway.ajouterVehicule(veh);
             }
+
             System.out.println("\nTour:" + nbTour);
             highway.checkCollision();
             highway.tourSuivant();

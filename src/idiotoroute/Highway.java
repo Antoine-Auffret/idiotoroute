@@ -37,7 +37,6 @@ public class Highway {
     }
 
     public void tourSuivant() {
-        System.out.println(roads);
         for (Enumeration<Vehicule> enumVehicule = vehiculeQuiRoule.elements(); enumVehicule.hasMoreElements();) {
             try {
                 enumVehicule.nextElement().rouler();
@@ -57,18 +56,30 @@ public class Highway {
             changeRoadBool = false;
             Vector<Vehicule> vehiculeOnRoad = (Vector<Vehicule>) road.vehicule.clone();
             System.out.println(road);
-            System.out.println(road.exit);
             for (Vehicule vehicule1: vehiculeOnRoad) {
+                for (Exit exit: road.exit) {
+                    //System.out.println(vehicule1.getPos());
+                    //System.out.println(exit.getPos()+vehicule1.getSpeed());
+                    //System.out.println(exit.getPos()-vehicule1.getSpeed());
+                    if (vehicule1.getPos() <= exit.getPos()+vehicule1.getSpeed() && vehicule1.getPos() >= exit.getPos()-vehicule1.getSpeed() && vehicule1.getPos() != 0) {
+                        oldRoad = road.getId();
+                        newRoad = (road.getId()+1);
+                        System.out.println(vehicule1+" change from road "+oldRoad+" to road "+newRoad);
+                        changeRoad(vehicule1, oldRoad, newRoad);
+                        changeRoadBool = true;
+                        break;
+                    }
+                }
                 for(Vehicule vehicule2: vehiculeOnRoad){
                     if(vehicule1 != vehicule2 && !skip){
                         skip = true;
                         if(Math.abs(vehicule1.getPos() - vehicule2.getPos()) <= distanceCollision){
                             if (vehicule1.getPos() < vehicule2.getPos()) {
                                 for (Exit exit: road.exit) {
-                                    System.out.println(exit.getPos()-20);
-                                    System.out.println(exit.getPos()+20);
-                                    System.out.println(vehicule1.getPos());
-                                    if (exit.getPos()+20 >= vehicule1.getPos() && exit.getPos()-20 <= vehicule1.getPos()){
+                                    //System.out.println(vehicule1.getPos());
+                                    //System.out.println(exit.getPos()+vehicule1.getSpeed());
+                                    //System.out.println(exit.getPos()-vehicule1.getSpeed());
+                                    if (vehicule1.getPos() <= exit.getPos()+vehicule1.getSpeed() && vehicule1.getPos() >= exit.getPos()-vehicule1.getSpeed()) {
                                         oldRoad = road.getId();
                                         newRoad = (road.getId()+1);
                                         System.out.println(vehicule1+" change from road "+oldRoad+" to road "+newRoad);
@@ -78,8 +89,11 @@ public class Highway {
                                 }
                                 if (!changeRoadBool) {
                                     System.out.println("Collision");
-                                    //vehicule1.setSpeed(0);
-                                    //vehicule2.setSpeed(0);
+                                    vehicule1.setSpeed(0);
+                                    vehicule2.setSpeed(0);
+                                    road.vehicule.remove(vehicule1);
+                                    road.vehicule.remove(vehicule2);
+                                    //throw new VehiculeCollisionException(vehicule1, vehicule2);
                                 }
                             }
                         }
@@ -103,7 +117,7 @@ public class Highway {
             else if (i==3) {
                 roads.add(new Road(i, 4, 70, 1.25));
             }
-            else if (i==5) {
+            else if (i==4) {
                 roads.add(new Road(i, 2, 60, 1.5));
             }
         }

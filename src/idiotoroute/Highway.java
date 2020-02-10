@@ -27,11 +27,6 @@ public class Highway {
             roads.get(oldRoad).removeVehiculeOnRoad(vehicule);
         if (!roads.get(newRoad).vehicule.contains(vehicule))
             roads.get(newRoad).addVehiculeOnRoad(vehicule);
-        /*System.out.println("OldRoadSPD:"+roads.get(oldRoad).getSpeed());
-        System.out.println("NewRoadSPD:"+roads.get(newRoad).getSpeed());
-        System.out.println("OldSPD:"+vehicule.getSpeed());
-        System.out.println("OrgSPD:"+vehicule.getOriginalSpeed());
-        System.out.println("NewSPD:"+vehicule.getOriginalSpeed()*roads.get(newRoad).getSpeed());*/
         vehicule.setSpeed(vehicule.getOriginalSpeed()*roads.get(newRoad).getSpeed());
     }
 
@@ -55,14 +50,12 @@ public class Highway {
 
     public void checkCollision() {
         boolean changeRoadBool;
-        boolean skip;
         int oldRoad;
         int newRoad;
         double posMin;
         double posMax;
         double distanceSecurite;
         for (Road road: roads) {
-            skip = false;
             Vector<Vehicule> vehiculeOnRoad = (Vector<Vehicule>) road.vehicule.clone();
             System.out.println(road);
             for (Vehicule vehicule1: vehiculeOnRoad) {
@@ -74,14 +67,14 @@ public class Highway {
                     if (vehicule1.getPos() <= posMax && vehicule1.getPos() >= posMin && road.getId() != (nbRoad-1)) {
                         oldRoad = road.getId();
                         newRoad = (road.getId()+1);
-                        System.out.println("\tExit:"+exit.getId()+", VPOS:"+vehicule1.getPos()+", POSMIN:"+posMin+", POSMAX:"+posMax);
+                        //System.out.println("\tExit:"+exit.getId()+", VPOS:"+vehicule1.getPos()+", POSMIN:"+posMin+", POSMAX:"+posMax);
                         System.out.println("\t\t"+vehicule1.getType()+vehicule1.getNoSerie()+" change from road "+oldRoad+" to road "+newRoad+" by exit "+exit.getId());
                         changeRoad(vehicule1, oldRoad, newRoad);
                         break;
                     }
                 }
                 for(Vehicule vehicule2: vehiculeOnRoad){
-                    if(vehicule1 != vehicule2 && !skip){
+                    if(vehicule1 != vehicule2){
                         changeRoadBool = false;
                         distanceSecurite = Math.abs(vehicule1.getSpeed()-vehicule2.getSpeed());
                         //System.out.println("Distance entre 2 vehicule:"+Math.abs(vehicule1.getPos()-vehicule2.getPos()));

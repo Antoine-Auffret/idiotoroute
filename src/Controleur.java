@@ -11,7 +11,7 @@ public class Controleur {
         Vehicule veh;
 
         while (true) {
-            if (nbTour%10 == 0) {
+            if (nbTour%5 == 0) {
                 veh = controleur.ajouterVehicule();
                 highway.ajouterVehicule(veh);
             }

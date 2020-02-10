@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Controleur {
 
-    public static void main(String[] args) throws InterruptedException, VehiculeCollisionException {
+    public static void main(String[] args) throws InterruptedException {
         int nbTour = 1;
         Controleur controleur = new Controleur();
         Highway highway = new Highway();

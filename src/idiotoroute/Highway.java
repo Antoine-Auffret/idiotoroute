@@ -2,7 +2,7 @@ package idiotoroute;
 
 import java.util.Enumeration;
 import java.util.Vector;
-import java.lang.*;
+import static java.lang.Math.abs;
 
 public class Highway {
 
@@ -38,9 +38,9 @@ public class Highway {
                 }
             }
         }
-        for (Enumeration<Vehicule> enumVehicule = vehiculeQuiRoule.elements(); enumVehicule.hasMoreElements();) {
+        for (Vehicule vehicule: vehiculeQuiRoule) {
             try {
-                enumVehicule.nextElement().rouler();
+                vehicule.rouler();
             } catch (VehiculeException e) {
                 System.out.println(e.getMessage());
                 e.printStackTrace();
@@ -67,7 +67,6 @@ public class Highway {
                     if (vehicule1.getPos() <= posMax && vehicule1.getPos() >= posMin && road.getId() != (nbRoad-1)) {
                         oldRoad = road.getId();
                         newRoad = (road.getId()+1);
-                        //System.out.println("\tExit:"+exit.getId()+", VPOS:"+vehicule1.getPos()+", POSMIN:"+posMin+", POSMAX:"+posMax);
                         System.out.println("\t\t"+vehicule1.getType()+vehicule1.getNoSerie()+" change from road "+oldRoad+" to road "+newRoad+" by exit "+exit.getId());
                         changeRoad(vehicule1, oldRoad, newRoad);
                         break;
@@ -76,10 +75,8 @@ public class Highway {
                 for(Vehicule vehicule2: vehiculeOnRoad){
                     if(vehicule1 != vehicule2){
                         changeRoadBool = false;
-                        distanceSecurite = Math.abs(vehicule1.getSpeed()-vehicule2.getSpeed());
-                        //System.out.println("Distance entre 2 vehicule:"+Math.abs(vehicule1.getPos()-vehicule2.getPos()));
-                        //System.out.println("Securite entre 2 vehicule:"+distanceSecurite);
-                        if(Math.abs(vehicule1.getPos() - vehicule2.getPos()) <= distanceSecurite){
+                        distanceSecurite = abs(vehicule1.getSpeed()-vehicule2.getSpeed());
+                        if(abs(vehicule1.getPos() - vehicule2.getPos()) <= distanceSecurite){
                             if (vehicule1.getPos() <= vehicule2.getPos()) {
                                 for (Exit exit: road.exit) {
                                     posMin = exit.getPos()-vehicule1.getSpeed();

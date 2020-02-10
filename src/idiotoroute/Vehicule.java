@@ -53,13 +53,14 @@ public class Vehicule {
             niveauEssence--;
             this.pos += speed;
         }
-        else if(!isCrashed) {
+        else if (!isCrashed){
             isCrashed = true;
             throw new VehiculeException(this);
         }
     }
 
     public void crash(Vehicule vehicule1, Vehicule vehicule2) throws VehiculeCollisionException {
+        isCrashed = true;
         throw new VehiculeCollisionException(vehicule1, vehicule2);
     }
 

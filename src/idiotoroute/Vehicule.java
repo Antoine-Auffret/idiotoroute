@@ -48,14 +48,14 @@ public class Vehicule {
         this.speed = speed;
     }
 
-    public void rouler() throws VehiculeException {
+    public void rouler() throws VehiculeEssenceException {
         if (verifierEssence()) {
             niveauEssence--;
             this.pos += speed;
         }
         else if (!isCrashed){
             isCrashed = true;
-            throw new VehiculeException(this);
+            throw new VehiculeEssenceException(this);
         }
     }
 

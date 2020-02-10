@@ -41,7 +41,7 @@ public class Highway {
         for (Vehicule vehicule: vehiculeQuiRoule) {
             try {
                 vehicule.rouler();
-            } catch (VehiculeException e) {
+            } catch (VehiculeEssenceException e) {
                 System.out.println(e.getMessage());
                 e.printStackTrace();
             }

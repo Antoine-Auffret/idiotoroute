@@ -20,7 +20,7 @@ public class Controleur {
             highway.checkCollision();
             highway.tourSuivant();
             nbTour++;
-            Thread.sleep(100);
+            Thread.sleep(500);
         }
     }
 

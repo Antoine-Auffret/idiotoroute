@@ -15,12 +15,24 @@ public class Controleur {
                 veh = controleur.ajouterVehicule();
                 highway.ajouterVehicule(veh);
             }
+            /*if (nbTour == 1) {
+                veh = new VehiculeA();
+                highway.ajouterVehicule(veh);
+            }
+            if (nbTour == 10) {
+                veh = new VehiculeB();
+                highway.ajouterVehicule(veh);
+            }
+            if (nbTour == 20) {
+                veh = new VehiculeC();
+                highway.ajouterVehicule(veh);
+            }*/
 
             System.out.println("\nTour:" + nbTour);
             highway.checkCollision();
             highway.tourSuivant();
             nbTour++;
-            Thread.sleep(500);
+            Thread.sleep(100);
         }
     }
 

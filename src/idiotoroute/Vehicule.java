@@ -49,7 +49,7 @@ public class Vehicule {
     }
 
     public void rouler() throws VehiculeEssenceException {
-        if (verifierEssence()) {
+        if (verifierEssence() && !isCrashed) {
             niveauEssence--;
             this.pos += speed;
         }
@@ -59,8 +59,11 @@ public class Vehicule {
         }
     }
 
+    public void setCrashed(Boolean crashed) {
+        isCrashed = crashed;
+    }
+
     public void crash(Vehicule vehicule1, Vehicule vehicule2) throws VehiculeCollisionException {
-        isCrashed = true;
         throw new VehiculeCollisionException(vehicule1, vehicule2);
     }
 

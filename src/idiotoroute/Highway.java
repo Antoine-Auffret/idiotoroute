@@ -1,6 +1,5 @@
 package idiotoroute;
 
-import java.util.Enumeration;
 import java.util.Vector;
 import static java.lang.Math.abs;
 
@@ -42,6 +41,9 @@ public class Highway {
             try {
                 vehicule.rouler();
             } catch (VehiculeEssenceException e) {
+                for (Road road: roads){
+                    road.vehicule.remove(vehicule);
+                }
                 System.out.println(e.getMessage());
                 e.printStackTrace();
             }
@@ -91,12 +93,13 @@ public class Highway {
                                     }
                                 }
                                 if (!changeRoadBool) {
-                                    System.out.println("Collision between "+vehicule1+" and "+vehicule2);
                                     vehicule1.setSpeed(0);
                                     vehicule2.setSpeed(0);
                                     road.vehicule.remove(vehicule1);
                                     road.vehicule.remove(vehicule2);
                                     try {
+                                        vehicule1.setCrashed(true);
+                                        vehicule2.setCrashed(true);
                                         vehicule1.crash(vehicule1, vehicule2);
                                     } catch (VehiculeCollisionException e) {
                                         System.out.println(e.getMessage());

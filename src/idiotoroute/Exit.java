@@ -4,17 +4,15 @@ public class Exit {
     private int id;
     private int pos;
 
-    public int getId() {
-        return id;
-    }
-
-    public int getPos() {
-        return pos;
-    }
-
     public Exit(int id, int pos){
         this.id = id;
         this.pos = pos;
+    }
+
+    public int getId() { return id; }
+
+    public int getPos() {
+        return pos;
     }
 
     @Override

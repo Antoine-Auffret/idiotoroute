@@ -5,44 +5,40 @@ import java.util.Random;
 public class Controleur {
 
     public static void main(String[] args) throws InterruptedException {
+        // Initialisation
         int nbTour = 1;
         Controleur controleur = new Controleur();
         Highway highway = new Highway();
-        Vehicule veh;
+        Vehicule vehicule;
 
+        // Boucle infini pemettant d'ajouter un nouveau véhicule au hasard sur l'idiotoroute tous les 5 tours
         while (true) {
             if (nbTour%5 == 0) {
-                veh = controleur.ajouterVehicule();
-                highway.ajouterVehicule(veh);
+                vehicule = controleur.ajouterVehicule();
+                highway.ajouterVehicule(vehicule);
             }
-            /*if (nbTour == 1) {
-                veh = new VehiculeA();
-                highway.ajouterVehicule(veh);
-            }
-            if (nbTour == 10) {
-                veh = new VehiculeB();
-                highway.ajouterVehicule(veh);
-            }
-            if (nbTour == 20) {
-                veh = new VehiculeC();
-                highway.ajouterVehicule(veh);
-            }*/
 
             System.out.println("\nTour:" + nbTour);
-            highway.checkCollision();
+
+            // Fait avancer les véhicules
             highway.tourSuivant();
+            // Vérification des collisions entre les véhicules à chaque tour
+            highway.checkCollision();
+
             nbTour++;
             Thread.sleep(100);
         }
     }
 
     public Vehicule ajouterVehicule() {
+        // Génération d'un nombre entre 1 et 3
         int[] vehiculeArray = {1, 2, 3};
         int vehiculeX = new Random().nextInt(vehiculeArray.length);
         int value = vehiculeArray[vehiculeX];
 
         Vehicule vehicule;
 
+        // Instantiation d'un nouveau véhicule en fonction du nombre généré
         switch(value){
             case 1: vehicule = new VehiculeA();
                 break;

@@ -4,17 +4,19 @@ import java.util.Random;
 
 public class Controleur {
 
+    private static Highway highway;
+    private static Vehicule vehicule;
+
     public static void main(String[] args) throws InterruptedException {
         // Initialisation
         int nbTour = 1;
         Controleur controleur = new Controleur();
-        Highway highway = new Highway();
-        Vehicule vehicule;
+        highway = new Highway();
 
         // Boucle infini pemettant d'ajouter un nouveau véhicule au hasard sur l'idiotoroute tous les 5 tours
         while (true) {
             if (nbTour%5 == 0) {
-                vehicule = controleur.ajouterVehicule();
+                controleur.ajouterVehicule();
                 highway.ajouterVehicule(vehicule);
             }
 
@@ -30,13 +32,11 @@ public class Controleur {
         }
     }
 
-    public Vehicule ajouterVehicule() {
+    public void ajouterVehicule() {
         // Génération d'un nombre entre 1 et 3
         int[] vehiculeArray = {1, 2, 3};
         int vehiculeX = new Random().nextInt(vehiculeArray.length);
         int value = vehiculeArray[vehiculeX];
-
-        Vehicule vehicule;
 
         // Instantiation d'un nouveau véhicule en fonction du nombre généré
         switch(value){
@@ -49,7 +49,5 @@ public class Controleur {
             default: vehicule = new VehiculeA();
                 break;
         }
-
-        return vehicule;
     }
 }
